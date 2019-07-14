@@ -1,0 +1,23 @@
+.lottery-container {
+  width: 330px;
+  height: 330px;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+  justify-content: space-around; }
+  .lottery-container .prize {
+    width: 100px;
+    height: 100px;
+    background: gray; }
+    .lottery-container .prize.high-light {
+      background-color: yellow; }
+
+#root {
+  width: 600px;
+  height: 600px;
+  background-color: rgba(50, 171, 150, 0.33);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+

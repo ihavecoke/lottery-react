@@ -1,0 +1,19 @@
+.lottery-container {
+  width: 330px;
+  height: 330px;
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+  justify-content: space-around;
+
+  .prize {
+    width: 100px;
+    height: 100px;
+    background: gray;
+
+    &.high-light {
+      background-color: yellow;
+    }
+  }
+}

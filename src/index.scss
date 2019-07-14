@@ -1,0 +1,10 @@
+@import "./lottery";
+
+#root {
+  width: 600px;
+  height: 600px;
+  background-color: rgba(50, 171, 150, 0.33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
