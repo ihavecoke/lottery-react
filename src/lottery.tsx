@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 class Prize extends React.Component {
   prize: any;
-  state = {};
-
   constructor(props) {
     super(props);
     this.prize = props.prize;
@@ -18,6 +16,55 @@ class Prize extends React.Component {
     </div>
   }
 }
+
+class SpeedControl {
+  currentSpeed: number;
+  startTimeoutId: number;
+
+  constructor(props) {
+    //@ts-ignore
+    this.currentSpeed = props.currentSpeed || 1000
+  }
+
+  defaultSpeed() {
+    return [
+      500, 450, 400, 350, 300, 250, 200, 150,
+      100, 100, 100, 100, 100, 100, 100, 100,
+      100, 100, 100, 100, 100, 100, 100, 100,
+      100, 100, 100, 100, 100, 100, 100, 100,
+      100, 150, 200, 250, 300, 350, 400, 450,
+      150, 200, 250, 300, 350, 400, 450, 500
+    ]
+  }
+
+  setDeceleratingTimeout = (callback, gutterTime, times, type) => {
+    clearTimeout(this.startTimeoutId);
+    let internalCallback = function (tick, counter, control) {
+      let internalCallbackId;
+      return function () {
+        clearTimeout(internalCallbackId);
+        let speed = control.currentSpeed;
+        if (--tick >= 0) {
+          speed = control.defaultSpeed()[++counter];
+          control.currentSpeed = speed;
+          console.log("speed", control.currentSpeed, "count:", counter);
+          internalCallbackId = window.setTimeout(internalCallback, speed);
+          callback();
+        }
+      }
+    }(times, 0, this);
+    this.startTimeoutId = window.setTimeout(internalCallback, gutterTime);
+  };
+
+  speedUp(callback) {
+    this.setDeceleratingTimeout(callback, 100, 48, "up")
+  }
+
+  speedDown(callback) {
+    this.setDeceleratingTimeout(callback, 100, 48, "down")
+  }
+}
+
 
 const prizes = [
   {name: "Alvarado", type: 'prize'},
@@ -41,22 +88,25 @@ class LotteryApp extends React.Component {
     ]
   };
   currentRoundTimes = 0;
-  currentRoundIndex = 0;
   rolling: boolean;
   rollingID: number;
+  speedControl: SpeedControl;
 
   constructor(props) {
     super(props);
+    this.speedControl = new SpeedControl({currentSpeed: 1000});
   }
 
   roll = () => {
     if (!this.rolling) {
       this.rolling = true;
       this.updateMatrix();
+      this.speedControl.speedUp(this.updateMatrix);
       // @ts-ignore
-      this.rollingID = setInterval(this.updateMatrix, 100)
+      // this.rollingID = setInterval(this.updateMatrix, 100)
     } else {
-      clearInterval(this.rollingID);
+      this.speedControl.speedDown(this.updateMatrix);
+      // clearInterval(this.rollingID);
       this.currentRoundTimes = 0;
       this.rolling = false;
     }
