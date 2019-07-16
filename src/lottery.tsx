@@ -1,34 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Roller from './roller';
-
-class Prize extends React.Component {
-  prize: any;
-  constructor(props) {
-    super(props);
-    this.prize = props.prize;
-  }
-
-  render() {
-    //@ts-ignore
-    const {extraClassName} = this.props;
-    return <div className={`prize ${extraClassName}`}>
-      <p className="item">{this.prize.name}</p>
-    </div>
-  }
-}
-
-const prizes = [
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Draw", type: 'luckyBtn'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'}
-];
+import Slot from './slot';
 
 class LotteryApp extends React.Component {
   state = {
@@ -69,13 +42,26 @@ class LotteryApp extends React.Component {
   prizeExtraClassName(index: number) {
     return this.state.positionMatrix[index] ? "high-light" : ""
   }
+
   render() {
     return <div className="lottery-container" onClick={this.roll}>
       {prizes.map((prize, index) => {
-        return <Prize prize={prize} key={index} extraClassName={this.prizeExtraClassName(index)}/>
+        return <Slot prize={prize} key={index} extraClassName={this.prizeExtraClassName(index)}/>
       })}
     </div>
   }
 }
+
+const prizes = [
+  {name: "Alvarado", type: 'prize'},
+  {name: "Alvarado", type: 'prize'},
+  {name: "Alvarado", type: 'prize'},
+  {name: "Alvarado", type: 'prize'},
+  {name: "Draw", type: 'luckyBtn'},
+  {name: "Alvarado", type: 'prize'},
+  {name: "Alvarado", type: 'prize'},
+  {name: "Alvarado", type: 'prize'},
+  {name: "Alvarado", type: 'prize'}
+];
 
 ReactDOM.render(<LotteryApp/>, document.getElementById('root'));
