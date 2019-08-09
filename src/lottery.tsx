@@ -32,6 +32,7 @@ class LotteryApp extends React.Component {
     window.addEventListener("roller.rollingOver", (customEvent) => {
       // @ts-ignore
       this.finallyPrizePosition = customEvent.detail.rollingPosition;
+      alert("u are lucky in" + this.finallyPrizePosition)
     })
   }
 
@@ -52,16 +53,17 @@ class LotteryApp extends React.Component {
   }
 }
 
+//定义的奖品信息
 const prizes = [
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Draw", type: 'luckyBtn'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'},
-  {name: "Alvarado", type: 'prize'}
+  {name: "iPhone XS", type: 'prize'},
+  {name: "iPad mini3", type: 'prize'},
+  {name: "GoPro", type: 'prize'},
+  {name: "Switch", type: 'prize'},
+  {name: "Start", type: 'luckyBtn'},
+  {name: "JD100", type: 'prize'},
+  {name: "Windows", type: 'prize'},
+  {name: "BMW", type: 'prize'},
+  {name: "Audi", type: 'prize'}
 ];
 
 ReactDOM.render(<LotteryApp/>, document.getElementById('root'));

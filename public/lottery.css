@@ -1,7 +1,7 @@
 .lottery-container {
   width: 330px;
   height: 330px;
-  background-color: white;
+  background-color: #cccccc;
   display: flex;
   flex-flow: row wrap;
   align-content: space-around;
@@ -9,13 +9,25 @@
   .lottery-container .prize {
     width: 100px;
     height: 100px;
-    background: gray; }
+    background: #f4f4f4;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px #888888; }
+    .lottery-container .prize.trigger-btn:hover {
+      background-color: #30a1f4; }
     .lottery-container .prize.high-light {
-      background-color: yellow; }
+      background-color: #ff8736; }
+
+body {
+  width: 100%; }
 
 #root {
   width: 600px;
   height: 600px;
+  margin: 100px auto;
   background-color: rgba(50, 171, 150, 0.33);
   display: flex;
   align-items: center;

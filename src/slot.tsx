@@ -11,7 +11,9 @@ class Slot extends React.Component {
   render() {
     //@ts-ignore
     const {extraClassName} = this.props;
-    return <div className={`prize ${extraClassName}`}>
+    const isStartDrawBtn = this.prize.type =="luckyBtn";
+    let className = `${extraClassName} ${isStartDrawBtn ? 'trigger-btn' : ''}`;
+    return <div className={`prize ${className}`}>
       <p className="item">{this.prize.name}</p>
     </div>
   }

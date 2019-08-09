@@ -1,8 +1,11 @@
 @import "./lottery";
-
+body{
+  width: 100%;
+}
 #root {
   width: 600px;
   height: 600px;
+  margin: 100px auto;
   background-color: rgba(50, 171, 150, 0.33);
   display: flex;
   align-items: center;

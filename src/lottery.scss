@@ -1,7 +1,7 @@
 .lottery-container {
   width: 330px;
   height: 330px;
-  background-color: white;
+  background-color: #cccccc;
   display: flex;
   flex-flow: row wrap;
   align-content: space-around;
@@ -10,10 +10,22 @@
   .prize {
     width: 100px;
     height: 100px;
-    background: gray;
+    background: #f4f4f4;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px #888888;
+
+    &.trigger-btn{
+      &:hover{
+        background-color: #30a1f4;
+      }
+    }
 
     &.high-light {
-      background-color: yellow;
+      background-color: #ff8736;
     }
   }
 }
