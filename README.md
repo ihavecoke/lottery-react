@@ -1,12 +1,9 @@
-## Logic
+### Emmmmm..
+This is a lottery app witch can use to custom prize and lucky prize
 
-* sample Ui
-* sample code
-* demo page
-* connect server
+You can find demo here [demo](https://mixbo.cn/lottery-react.html)
 
-### Sample UI
-
-* jiugongge
-* color theme
-* Ui theme
+### Should do next
+* Support use ui framework like bootstrap antd etc 
+* Support custom prizes in config file not code logic
+* More Readme
